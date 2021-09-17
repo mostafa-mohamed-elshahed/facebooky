@@ -59,6 +59,7 @@ Widget defaultFormField({
   IconData? suffix,
   Function? suffixPressed,
   bool isClickable = true,
+ required BuildContext? context,
 }) =>
     TextFormField(
       controller: controller,
@@ -78,7 +79,9 @@ Widget defaultFormField({
         validate!();
       },
       decoration: InputDecoration(
+        focusColor: Theme.of(context!).textTheme.subtitle1!.color,
         labelText: label,
+        labelStyle: Theme.of(context).textTheme.subtitle1,
         prefixIcon: Icon(
           prefix,
         ),
@@ -93,8 +96,15 @@ Widget defaultFormField({
               )
             : null,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(50),
-          borderSide:borderSide ?? BorderSide(color: Colors.grey.shade300)
+          borderRadius: BorderRadius.circular(50,),
+        ),
+        enabledBorder:  OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50,),
+            borderSide: BorderSide(color: Theme.of(context).textTheme.button!.color!,width: 1),
+        ),
+        focusedBorder:   OutlineInputBorder(
+          borderRadius: BorderRadius.circular(50,),
+          borderSide: BorderSide(color: Theme.of(context).textTheme.button!.color!,width: 1),
         ),
       ),
     );
@@ -103,6 +113,7 @@ Widget defaultFormField({
 Widget defaultIconAppBar({
  required IconData? icon,
   Function? function,
+  bool? C,
 })
 =>Padding(
   padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -110,11 +121,11 @@ Widget defaultIconAppBar({
 
       radius: 20,
 
-      backgroundColor: Colors.grey[200],
+      backgroundColor:C! ? Colors.black54:Colors.grey[200],
 
       child: IconButton(onPressed: (){
 
-        function!;
+        function!();
 
       },
 
@@ -124,7 +135,7 @@ Widget defaultIconAppBar({
 
             size: 24,
 
-            color: Colors.black,),
+            color: C ?Colors.white: Colors.black,),
 
       ),
 
@@ -132,11 +143,11 @@ Widget defaultIconAppBar({
 );
 
 PreferredSizeWidget defaultAppBar({
-
   String? title,
   List<Widget>? actions,
+  double? height =140,
 }) => AppBar(
-toolbarHeight: 140,
+toolbarHeight: height,
   titleSpacing: 5.0,
   title: Padding(
     padding: const EdgeInsets.only(left:12.0),
@@ -148,16 +159,16 @@ toolbarHeight: 140,
 );
 
 
-Widget myDividerH() => Container(
+Widget myDividerH({@required BuildContext? context}) => Container(
   width: double.infinity,
   height: 1.0,
-  color: Colors.grey[300],
-);
-Widget myDividerW() => Container(
+  color:Theme.of(context!).textTheme.button!.color ,
+);Widget myDividerW({@required BuildContext? context}) => Container(
   height: 30,
   width: 1,
-  color: Colors.grey[300],
+  color:Theme.of(context!).textTheme.button!.color ,
 );
+
 
 void navigateTo(context, widget) => Navigator.push(
       context,
@@ -278,7 +289,7 @@ Widget builderList({
                     Row(
                       children: [
                         Text(mainName!,
-                            style: Theme.of(context).textTheme.bodyText2),
+                            style: Theme.of(context).textTheme.subtitle1),
                         SizedBox(
                           width: 8,
                         ),
@@ -302,7 +313,7 @@ Widget builderList({
                 Spacer(),
                 IconButton(
                     onPressed: () {},
-                    icon: Icon(FontAwesomeIcons.ellipsisH,size: 18,))
+                    icon: Icon(FontAwesomeIcons.ellipsisH,size: 18,color: Theme.of(context).appBarTheme.iconTheme!.color,))
               ],
             ),
             Padding(
@@ -319,7 +330,7 @@ Widget builderList({
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
                 postText!,
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(context).textTheme.subtitle1,
               ),
             ),
             if(postImage != null)
@@ -340,7 +351,7 @@ Widget builderList({
                 children: [
                   Row(
                     children: [
-                      Text("1200"),
+                      Text("1200",style: Theme.of(context).textTheme.caption,),
                       IconButton(
                           onPressed: () {},
                           icon: Icon(
@@ -352,7 +363,7 @@ Widget builderList({
                   Spacer(),
                   Row(
                     children: [
-                      Text("Comment"),
+                      Text("Comment",style: Theme.of(context).textTheme.caption),
                       IconButton(
                           onPressed: () {},
                           icon: Icon(

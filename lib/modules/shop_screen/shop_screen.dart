@@ -6,7 +6,7 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("ShopScreen"),
+      child: Text("ShopScreen",style: Theme.of(context).textTheme.bodyText1,),
     );
   }
 }

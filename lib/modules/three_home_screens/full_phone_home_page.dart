@@ -6,72 +6,77 @@ import 'package:mr_ahmed_salah_task_facebook/shared/components/components.dart';
 
 Widget fullPhonePageHere(context,controller)=> Column(
   children: [
-    SizedBox(height: 55,),
-    Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only( left: 8),
-          child: CircleAvatar(
-            radius: 22,
-            backgroundImage: NetworkImage(
-              "https://img.freepik.com/free-photo/portrait-smiling-young-man_53419-5764.jpg",
+    SizedBox(height: 30,),
+    myDividerH(context: context),
+    SizedBox(height: 10,),
+    Container(
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only( left: 8),
+            child: CircleAvatar(
+              radius: 22,
+              backgroundImage: NetworkImage(
+                "https://img.freepik.com/free-photo/portrait-smiling-young-man_53419-5764.jpg",
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          width: 16,
-        ),
-        Expanded(
-          child: Container(
-            height: 40,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(60)
-            ),
-            child: defaultFormField(
-                controller: controller,
-                type: TextInputType.text,
-                validate: (String value){
-                  if(value.isEmpty){
-                    return "value is empty";
-                  }
-                },
-                label: "What's on your mind ?",
-                prefix: null
+          SizedBox(
+            width: 16,
+          ),
+          Expanded(
+            child: Container(
+              height: 40,
+              decoration: BoxDecoration(
+                color: Theme.of(context).scaffoldBackgroundColor,
+              ),
+              child: defaultFormField(
+                  context: context,
+                  controller: controller,
+                  type: TextInputType.text,
+                  validate: (String value){
+                    if(value.isEmpty){
+                      return "value is empty";
+                    }
+                  },
+                  label: "What's on your mind ?",
+                  prefix: null
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          width: 8,
-        )
-      ],
+          SizedBox(
+            width: 8,
+          )
+        ],
+      ),
     ),
     SizedBox(height: 15,),
-    myDividerH(),
+    myDividerH(context: context),
     Row(
       children: [
         Expanded(
           child: TextButton.icon(onPressed: (){}, icon: Icon(
             Icons.videocam_rounded,color: Colors.red,
           ),
-            label: Text("Live",style: TextStyle(color: Colors.black),
+            label: Text("Live",style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
             ),
           ),
         ),
-        myDividerW(),
+        myDividerW(context: context),
         Expanded(
           child: TextButton.icon(onPressed: (){}, icon: Icon(
             Icons.photo_library_outlined,color: Colors.green,
           ),
-            label: Text("Photo",style: TextStyle(color: Colors.black),
+            label: Text("Photo",style: TextStyle(color:  Theme.of(context).textTheme.bodyText1!.color),
             ),
           ),
         ),
-        myDividerW(),
+        myDividerW(context: context),
         Expanded(
           child: TextButton.icon(onPressed: (){}, icon: Icon(
             Icons.video_call,color: Colors.deepPurpleAccent,
           ),
-            label: Text("Room",style: TextStyle(color: Colors.black),
+            label: Text("Room",style: TextStyle(color:  Theme.of(context).textTheme.bodyText1!.color),
             ),
           ),
         ),
@@ -79,11 +84,11 @@ Widget fullPhonePageHere(context,controller)=> Column(
     ),
     Container(
       width: double.infinity,
-      height: 12.0,
-      color: Colors.grey[200],
+      height: 16.0,
+      color: Theme.of(context).textTheme.overline!.color,
     ),
     Container(
-      color: Colors.white,
+      color: Theme.of(context).appBarTheme.color,
       width: double.infinity,
       height: 240,
       child: CarouselSlider(
@@ -119,8 +124,8 @@ Widget fullPhonePageHere(context,controller)=> Column(
     ),
     Container(
       width: double.infinity,
-      height: 12.0,
-      color: Colors.grey[200],
+      height: 16.0,
+      color: Theme.of(context).textTheme.overline!.color,
     ),
     ListView.separated(
       physics: ScrollPhysics(),
@@ -133,9 +138,12 @@ Widget fullPhonePageHere(context,controller)=> Column(
           postImage:PostsModel.modelPost[index].postImage,
           personalPhoto: PostsModel.modelPost[index].personalPhoto,
         ),
-        separatorBuilder: (context, index) => SizedBox(
-          height: 8,
+        separatorBuilder: (context, index) =>   Container(
+          width: double.infinity,
+          height: 16.0,
+          color: Theme.of(context).textTheme.overline!.color,
         ),
         itemCount: PostsModel.modelPost.length),
   ],
 );
+

@@ -13,6 +13,11 @@ class FaceBookCubitApp extends Cubit<FaceBookStateApp>{
  static FaceBookCubitApp get(context)=>BlocProvider.of(context);
 
 int currentIndex=0;
+bool isDark=false;
+void changeThemeMode(){
+   isDark = !isDark;
+   emit(ChangeThemeModeAppState());
+}
 
 void changeCurrentIndex(index){
   currentIndex=index;

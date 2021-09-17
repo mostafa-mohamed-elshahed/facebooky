@@ -16,46 +16,53 @@ class HomeFaceBookScreen extends StatelessWidget {
         return ScreenTypeLayout(
           mobile:   Scaffold(
             appBar: defaultAppBar(
+              height: 80,
               title: "facebook",
               actions: [
-                defaultIconAppBar(icon: FontAwesomeIcons.search,),
-                defaultIconAppBar(icon:FontAwesomeIcons.facebookMessenger,),
+                defaultIconAppBar(icon: FontAwesomeIcons.search,function: ()=>cubit.changeThemeMode(),C: cubit.isDark),
+                defaultIconAppBar(icon:FontAwesomeIcons.facebookMessenger,C:cubit.isDark),
               ],
             ),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
-            floatingActionButton: BottomNavigationBar(
-              currentIndex: cubit.currentIndex,
-              onTap: (index) {
-                cubit.changeCurrentIndex(index);
-              },
-              items: [
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-                BottomNavigationBarItem(
-                    icon: Icon(FontAwesomeIcons.users), label: "Group"),
-                BottomNavigationBarItem(
-                    icon: Icon(FontAwesomeIcons.tv), label: "Live"),
-                BottomNavigationBarItem(
-                    icon: Icon(FontAwesomeIcons.store), label: "Shop"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.notifications), label: "Notification"),
-                BottomNavigationBarItem(
-                    icon: Icon(FontAwesomeIcons.bars), label: "Settings"),
-              ],
+            floatingActionButton: Padding(
+              padding: const EdgeInsets.only(top: 60.0),
+              child: BottomNavigationBar(
+                elevation: 0,
+                currentIndex: cubit.currentIndex,
+                onTap: (index) {
+                  cubit.changeCurrentIndex(index);
+                },
+                items: [
+                  BottomNavigationBarItem(icon: Icon(Icons.home), label: "ــــــــــــــــ"),
+                  BottomNavigationBarItem(
+                      icon: Icon(FontAwesomeIcons.users), label: "ـــــــــــــــ",),
+                  BottomNavigationBarItem(
+                      icon: Icon(FontAwesomeIcons.tv), label: "ــــــــــــــ"),
+                  BottomNavigationBarItem(
+                      icon: Icon(FontAwesomeIcons.store), label: "ـــــــــــــ"),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.notifications), label: "ـــــــــــــ"),
+                  BottomNavigationBarItem(
+                      icon: Icon(FontAwesomeIcons.bars), label: "ـــــــــــ"),
+                ],
+              ),
             ),
-            body: cubit.screen[cubit.currentIndex],
+            body: Padding(
+              padding: const EdgeInsets.only(top: 40.0),
+              child: cubit.screen[cubit.currentIndex],
+            ),
           ),
           desktop:  Scaffold(
-
             appBar: AppBar(
               toolbarHeight: MediaQuery.of(context).size.height*0.070,
               actions: [
-                Expanded(flex: 1,
+                Expanded(
                   child: Row(
                     children: [
                       Expanded(
                           child: IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.facebook,color: Theme.of(context).appBarTheme.titleTextStyle!.color,size: 38,),padding: EdgeInsets.only(bottom: 8),)),
                       Expanded(
-                        flex: 2,
+                        flex: 3,
                         child:  Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: Container(
@@ -64,7 +71,7 @@ class HomeFaceBookScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(60),
                             ),
                             child: defaultFormField(
-
+                                context: context,
                                 borderSide: BorderSide.none,
                                 controller: controller,
                                 type: TextInputType.text,
@@ -82,14 +89,13 @@ class HomeFaceBookScreen extends StatelessWidget {
                       Expanded(
                         flex: 10 ,
                         child: Text(""),),
-                      Expanded(flex: 3,
+                      Expanded(flex: 4,
                         child: Row(
                           children: [
                             Expanded(
                               flex: 3,
                               child: Row(
                                 children: [
-
                                   CircleAvatar(
                                     radius: 16,
                                     backgroundImage: NetworkImage(
@@ -170,39 +176,42 @@ class HomeFaceBookScreen extends StatelessWidget {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerTop,
             floatingActionButton: Padding(
-              padding: const EdgeInsets.only(bottom: 70.0),
+              padding: const EdgeInsets.only(top: 0.0,left: 50),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                      flex: 3,
+                      flex: 4,
                       child: Text("")),
                   Expanded(
-                    flex: 3,
+                    flex: 5,
                     child: BottomNavigationBar(
                       currentIndex: cubit.currentIndex,
+                      elevation: 0,
                       onTap: (index) {
                         cubit.changeCurrentIndex(index);
                       },
                       items: [
                         BottomNavigationBarItem(
-                            icon: Icon(Icons.home), label: "Home"),
+                            icon: Icon(Icons.home), label: "ــــــــــــــــ"),
                         BottomNavigationBarItem(
-                            icon: Icon(FontAwesomeIcons.users), label: "Group"),
+                            icon: Icon(FontAwesomeIcons.users), label: "ـــــــــــــــ"),
                         BottomNavigationBarItem(
-                            icon: Icon(FontAwesomeIcons.tv), label: "Live"),
+                            icon: Icon(FontAwesomeIcons.tv), label: "ــــــــــــــ"),
                         BottomNavigationBarItem(
-                            icon: Icon(FontAwesomeIcons.store), label: "Shop"),
+                            icon: Icon(FontAwesomeIcons.store), label: "ـــــــــــــ"),
                         BottomNavigationBarItem(
                             icon: Icon(FontAwesomeIcons.user),
-                            label: "Users"),
+                            label: "ــــــــــــ"),
+                        BottomNavigationBarItem(
+                            icon: Icon(FontAwesomeIcons.bars), label: "ـــــــــــ"),
                       ],
                     ),
                   ),
                   Expanded(
-                      flex: 3,
+                      flex: 4,
                       child: Text("")),
                 ],
               ),
@@ -308,22 +317,23 @@ class HomeFaceBookScreen extends StatelessWidget {
                   flex: 4,
                   child: BottomNavigationBar(
                     currentIndex: cubit.currentIndex,
+                    elevation: 0,
                     onTap: (index) {
                       cubit.changeCurrentIndex(index);
                     },
                     items: [
                       BottomNavigationBarItem(
-                          icon: Icon(Icons.home), label: "Home"),
+                          icon: Icon(Icons.home), label: "ــــــــــــــــ"),
                       BottomNavigationBarItem(
-                          icon: Icon(FontAwesomeIcons.users), label: "Group"),
+                          icon: Icon(FontAwesomeIcons.users), label: "ـــــــــــــــ"),
                       BottomNavigationBarItem(
-                          icon: Icon(FontAwesomeIcons.tv), label: "Live"),
+                          icon: Icon(FontAwesomeIcons.tv), label: "ــــــــــــــ"),
                       BottomNavigationBarItem(
-                          icon: Icon(FontAwesomeIcons.store), label: "Shop"),
+                          icon: Icon(FontAwesomeIcons.store), label: "ـــــــــــــ"),
                       BottomNavigationBarItem(
-                          icon: Icon(Icons.notifications), label: "Notification"),
+                          icon: Icon(Icons.notifications), label: "ــــــــــــ"),
                       BottomNavigationBarItem(
-                          icon: Icon(FontAwesomeIcons.bars), label: "Settings"),
+                          icon: Icon(FontAwesomeIcons.bars), label: "ـــــــــــ"),
                     ],
                   ),
                 ),
