@@ -8,12 +8,14 @@ class PostsModel{
  late String? postImage;
  @required String? personalPhoto;
 
+
   PostsModel({
   this.mainName,
   this.dateTime,
   this.personalPhoto,
   this.postImage,
   this.postText,
+
 });
 
 

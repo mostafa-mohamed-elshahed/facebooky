@@ -1,10 +1,5 @@
-
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mr_ahmed_salah_task_facebook/models/carousel_model/carousel_model.dart';
-import 'package:mr_ahmed_salah_task_facebook/models/posts_model/posts_model.dart';
 import 'package:mr_ahmed_salah_task_facebook/models/users_model/user_model.dart';
 import 'package:mr_ahmed_salah_task_facebook/modules/three_home_screens/full_phone_home_page.dart';
 import 'package:mr_ahmed_salah_task_facebook/shared/components/components.dart';

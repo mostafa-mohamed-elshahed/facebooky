@@ -16,7 +16,7 @@ class HomeFaceBookScreen extends StatelessWidget {
         return ScreenTypeLayout(
           mobile:   Scaffold(
             appBar: defaultAppBar(
-              height: 80,
+              height: 60,
               title: "facebook",
               actions: [
                 defaultIconAppBar(icon: FontAwesomeIcons.search,function: ()=>cubit.changeThemeMode(),C: cubit.isDark),
@@ -25,15 +25,16 @@ class HomeFaceBookScreen extends StatelessWidget {
             ),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
             floatingActionButton: Padding(
-              padding: const EdgeInsets.only(top: 60.0),
+              padding: const EdgeInsets.only(top: 60.0,bottom: 0),
               child: BottomNavigationBar(
+
                 elevation: 0,
                 currentIndex: cubit.currentIndex,
                 onTap: (index) {
                   cubit.changeCurrentIndex(index);
                 },
                 items: [
-                  BottomNavigationBarItem(icon: Icon(Icons.home), label: "ــــــــــــــــ"),
+                  BottomNavigationBarItem(icon: Icon(Icons.home), label: "ــــــــــــــــ",),
                   BottomNavigationBarItem(
                       icon: Icon(FontAwesomeIcons.users), label: "ـــــــــــــــ",),
                   BottomNavigationBarItem(
@@ -67,7 +68,7 @@ class HomeFaceBookScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 8),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[100],
+                              color: Theme.of(context).textTheme.button!.color,
                               borderRadius: BorderRadius.circular(60),
                             ),
                             child: defaultFormField(

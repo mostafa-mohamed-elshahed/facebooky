@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:mr_ahmed_salah_task_facebook/models/carousel_model/carousel_model.dart';
+import 'package:mr_ahmed_salah_task_facebook/models/comment_model/comment_model.dart';
 import 'package:mr_ahmed_salah_task_facebook/models/posts_model/posts_model.dart';
 import 'package:mr_ahmed_salah_task_facebook/shared/components/components.dart';
 
@@ -93,7 +94,7 @@ Widget fullPhonePageHere(context,controller)=> Column(
       height: 240,
       child: CarouselSlider(
           options: CarouselOptions(
-            height: 200,
+            height: 220,
             initialPage: 0,
             enableInfiniteScroll: true,
             reverse: false,
@@ -103,7 +104,7 @@ Widget fullPhonePageHere(context,controller)=> Column(
             ),
             autoPlayCurve: Curves.fastOutSlowIn,
             scrollDirection: Axis.horizontal,
-            viewportFraction: 0.38,
+            viewportFraction: 0.31,
           ),
           items: CarouselModel.carousel.map((e) =>
               ListView.builder(
@@ -132,6 +133,9 @@ Widget fullPhonePageHere(context,controller)=> Column(
         shrinkWrap: true,
         itemBuilder: (context, index) => builderList(
           context: context,
+          mainNameComment: CommentModel.commentModel[index].mainNameComment,
+          personalPhotoComment: CommentModel.commentModel[index].personalPhotoComment ,
+          postTextComment:  CommentModel.commentModel[index].postTextComment,
           mainName: PostsModel.modelPost[index].mainName,
           dateTime: PostsModel.modelPost[index].dateTime,
           postText: PostsModel.modelPost[index].postText,
